@@ -6,6 +6,10 @@ import com.mojang.logging.LogUtils;
 
 import com.sinewhales.simpleoxygen.Config;
 import com.sinewhales.simpleoxygen.AirDamageHandler;
+import com.sinewhales.simpleoxygen.item.CreativeTabs;
+import com.sinewhales.simpleoxygen.item.ModDataComponents;
+import com.sinewhales.simpleoxygen.item.ModItems;
+
 
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -40,6 +44,9 @@ public class SimpleOxygen {
 
         // Register our mod's ModConfigSpec so that FML can create and load the config file for us
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+        ModDataComponents.register(modEventBus);
+        ModItems.register(modEventBus);
+        CreativeTabs.register(modEventBus);
 
         NeoForge.EVENT_BUS.register(AirDamageHandler.class);
     }
